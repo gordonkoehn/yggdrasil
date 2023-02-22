@@ -11,3 +11,11 @@ Supervisor: Niko Beerenwinkel
 
 Co-Supervisor: Pawel Czyz Piotr
 
+#### Description
+
+TBA
+
+#### Contents
+
+sandbox/ - snippets copied and written during learning the needed basics in statistics
+

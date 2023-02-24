@@ -17,5 +17,5 @@ TBA
 
 #### Contents
 
-sandbox/ - snippets copied and written during learning the needed basics in statistics
+- sandbox/ - snippets copied and written during learning the needed basics in statistics
 

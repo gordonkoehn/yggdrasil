@@ -2,3 +2,5 @@
 *.ini
 .DS_Store
 *.pyc
+.idea/
+.spyproject/

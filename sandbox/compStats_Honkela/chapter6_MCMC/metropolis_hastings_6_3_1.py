@@ -15,7 +15,7 @@ Created on Wed Feb 22 15:41:56 2023
 
 """
 
-import numpy as np
+ eimport numpy as np
 import numpy.random as npr
 import matplotlib.pyplot as plt
  

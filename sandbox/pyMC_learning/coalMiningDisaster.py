@@ -64,3 +64,26 @@ if __name__ == '__main__':
             ax.set_xticklabels(labels, rotation=45, ha="right")
             break
     plt.draw()
+    ###########################################################################
+    plt.figure(figsize=(10, 8))
+    plt.plot(years, disaster_data, ".", alpha=0.6)
+    plt.ylabel("Number of accidents", fontsize=16)
+    plt.xlabel("Year", fontsize=16)
+    
+    trace = idata.posterior.stack(draws=("chain", "draw"))
+    
+    plt.vlines(trace["switchpoint"].mean(), disaster_data.min(), disaster_data.max(), color="C1")
+    average_disasters = np.zeros_like(disaster_data, dtype="float")
+    for i, year in enumerate(years):
+        idx = year < trace["switchpoint"]
+        average_disasters[i] = np.mean(np.where(idx, trace["early_rate"], trace["late_rate"]))
+    
+    sp_hpd = az.hdi(idata, var_names=["switchpoint"])["switchpoint"].values
+    plt.fill_betweenx(
+        y=[disaster_data.min(), disaster_data.max()],
+        x1=sp_hpd[0],
+        x2=sp_hpd[1],
+        alpha=0.5,
+        color="C1",
+    )
+    plt.plot(years, average_disasters, "k--", lw=2);
